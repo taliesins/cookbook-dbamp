@@ -20,7 +20,7 @@
 default['dbamp']['name'] = 'DBAmp'
 default['dbamp']['filename'] = 'dbamp'
 default['dbamp']['filenameextension'] = 'zip'
-default['dbamp']['url'] = 'http://www.forceamp.com/hats/' + default['dbamp']['filename'] + '.' + default['dbamp']['filename'] 
+default['dbamp']['url'] = 'http://www.forceamp.com/hats/' + default['dbamp']['filename'] + '.' + default['dbamp']['filenameextension'] 
 default['dbamp']['checksum'] = 'e13576edc17321ab45ed8a5a1043f6bba42594bb41f6a9f51a2d8a86f95ccc04'
 
 default['dbamp']['properties']['APPDIR'] = 'C:\\Program Files\DBAmp\\'
