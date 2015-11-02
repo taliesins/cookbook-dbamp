@@ -1,10 +1,10 @@
 # dbamp-cookbook
 
-TODO: Enter the cookbook description here.
+Install DBAmp, a plugin to facilitate data integration between Salesforce.com and SQL Server.
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+Windows
 
 ## Attributes
 
@@ -16,11 +16,35 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['dbamp']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['dbamp']['properties']['APPDIR']</tt></td>
+    <td>String</td>
+    <td>App installation directory</td>
+    <td><tt>C:\\Program Files\DBAmp\\</tt></td>
   </tr>
+  <tr>
+    <td><tt>['dbamp']['properties']['TARGETDIR']</tt></td>
+    <td>String</td>
+    <td>App installation directory</td>
+    <td><tt>C:\\Program Files\DBAmp\\</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['dbamp']['properties']['PIDKEY']</tt></td>
+    <td>String</td>
+    <td>Serial Key</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['dbamp']['properties']['USERNAME']</tt></td>
+    <td>String</td>
+    <td>Username</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['dbamp']['properties']['COMPANYNAME']</tt></td>
+    <td>String</td>
+    <td>Company Name</td>
+    <td><tt></tt></td>
+  </tr>    
 </table>
 
 ## Usage
@@ -39,4 +63,4 @@ Include `dbamp` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Taliesin Sisson (<taliesins@yahoo.com>)
