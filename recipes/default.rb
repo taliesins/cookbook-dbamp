@@ -30,7 +30,7 @@ windows_zipfile extract_path do
 	source node['dbamp']['url']
 	checksum node['dbamp']['checksum']
 	action :unzip
-	not_if {is_dbamp_installed}
+	not_if {is_dbamp_installed || ::File.directory?(extract_path)}
 end
 
 windows_package node['dbamp']['name'] do
