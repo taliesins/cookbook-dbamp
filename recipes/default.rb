@@ -34,7 +34,6 @@ windows_zipfile extract_path do
 end
 
 windows_package node['dbamp']['name'] do
-	checksum node['dbamp']['checksum']
 	source "#{extract_path}/DBAmpInstall.exe"
 	installer_type :custom
 	options "/quiet APPDIR=\"#{node['dbamp']['properties']['APPDIR']}\" TARGETDIR=\"#{node['dbamp']['properties']['TARGETDIR']}\" PIDKEY=\"#{node['dbamp']['properties']['PIDKEY']}\" USERNAME=\"#{node['dbamp']['properties']['USERNAME']}\" COMPANYNAME=\"#{node['dbamp']['properties']['COMPANYNAME']}\""
