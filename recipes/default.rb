@@ -37,4 +37,5 @@ windows_package node['dbamp']['name'] do
 	source "#{extract_path}/DBAmpInstall.exe"
 	installer_type :custom
 	options "/quiet APPDIR=\"#{node['dbamp']['properties']['APPDIR']}\" TARGETDIR=\"#{node['dbamp']['properties']['TARGETDIR']}\" PIDKEY=\"#{node['dbamp']['properties']['PIDKEY']}\" USERNAME=\"#{node['dbamp']['properties']['USERNAME']}\" COMPANYNAME=\"#{node['dbamp']['properties']['COMPANYNAME']}\""
+	not_if { is_dbamp_installed }
 end
