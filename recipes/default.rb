@@ -19,22 +19,23 @@
 #
 
 ::Chef::Recipe.send(:include, Windows::Helper)
-is_dbamp_installed = is_package_installed?("#{node['dbamp']['name']}")
+is_dbamp_installed = is_package_installed?(node['dbamp']['name'])
 extract_path = "#{Chef::Config['file_cache_path']}/#{node['dbamp']['filename']}/#{node['dbamp']['checksum']}"
 
-if node['dbamp']['properties']['PIDKEY'] == ""
-	raise "Please configure dbamp serial key in PIDKEY attribute"
+if node['dbamp']['properties']['PIDKEY'] == ''
+  raise 'Please configure dbamp serial key in PIDKEY attribute'
 end
 
 windows_zipfile extract_path do
-	source node['dbamp']['url']
-	checksum node['dbamp']['checksum']
-	action :unzip
-	not_if {is_dbamp_installed || ::File.directory?(extract_path)}
+  source node['dbamp']['url']
+  checksum node['dbamp']['checksum']
+  action :unzip
+  not_if { is_dbamp_installed || ::File.directory?(extract_path) }
 end
 
 windows_package node['dbamp']['name'] do
-	source "#{extract_path}/DBAmpInstall.exe"
-	installer_type :custom
-	options "/quiet APPDIR=\"#{node['dbamp']['properties']['APPDIR']}\" TARGETDIR=\"#{node['dbamp']['properties']['TARGETDIR']}\" PIDKEY=\"#{node['dbamp']['properties']['PIDKEY']}\" USERNAME=\"#{node['dbamp']['properties']['USERNAME']}\" COMPANYNAME=\"#{node['dbamp']['properties']['COMPANYNAME']}\""
+  source "#{extract_path}/DBAmpInstall.exe"
+  installer_type :custom
+  options "/quiet APPDIR=\"#{node['dbamp']['properties']['APPDIR']}\" TARGETDIR=\"#{node['dbamp']['properties']['TARGETDIR']}\" PIDKEY=\"#{node['dbamp']['properties']['PIDKEY']}\" USERNAME=\"#{node['dbamp']['properties']['USERNAME']}\" COMPANYNAME=\"#{node['dbamp']['properties']['COMPANYNAME']}\""
+  not_if { is_dbamp_installed }
 end
